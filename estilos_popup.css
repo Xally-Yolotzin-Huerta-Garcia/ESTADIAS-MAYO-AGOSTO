@@ -1,0 +1,135 @@
+/* estilos caja popup */
+.overlay {
+    background: rgb(0, 0, 0, .3); /* fondo oscuro*/
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden; /* oculta los elementos de mi overlay */ 
+}
+.overlay.active{
+    visibility: visible;
+}
+.popup{
+    background: #f8f8f8; /* fondo de color blanco */
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3); /* mostrar una una sobra en el cuadro */
+    border-radius: 3px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 20px;
+    text-align: center;
+    width: 600px; 
+    transition: .5s ease all;
+    transform: scale(0.9);
+    opacity: 0;
+}
+.popup .btn-cerrar-popup {
+     font-size: 16px;
+     line-height: 16px;
+     display: block;
+     text-align: right;
+     color: #bbbbbb;
+     transition: .3s ease all;
+}
+
+.popup .btn-cerrar-popup:hover {
+    color: black;
+}
+.popup h3 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    opacity: 0;
+}
+.popup h4 {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 40px;
+    opacity: 0;
+}
+.popup form .contenedor-inputs {
+opacity: 0;
+}
+
+.popup form .contenedor-inputs input:invalid{
+    width:100%;
+    margin-bottom: 20px;
+    height: 52px;
+    line-height: 52px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #bbbbbb;
+}
+
+.popup form .contenedor-inputs input:invalid:required{
+
+    background-image: linear-gradient(to right, pink,
+    lightgreen);
+}
+
+.popup form .contenedor-inputs input:valid{
+
+    border:2px solid red;
+}
+
+.popup form .btn-submit{
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    color: #fff;
+    background: #5E7DE3;
+    border-radius: 3px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s ease all;
+}
+
+.popup form .btn-submit:hover{
+    background: rgba(94, 125, 227, .5);
+}
+
+
+/*animaciones */
+.popup.active{opacity: 1; transform: scale(1);}
+.popup.active h3 {animation: entradaTitulo .8s ease 1s forwards; }
+.popup.active h4 {animation: entradaSubTitulo .8s ease 1s forwards; }
+.popup.active .contenedor-inputs {animation: entradaInputs 1s ease 2s forwards; }
+
+@keyframes entradaTitulo {
+    from{
+        transform:  translateY(-25px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+
+    }
+}
+
+@keyframes entradaSubTitulo {
+    from{
+        transform:  translateY(25px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+
+    }
+}
+
+@keyframes entradaInputs {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+
+    }
+}
